@@ -17,25 +17,27 @@ class ServiceController extends AbstractController
         ]);
     }
 
-    #[Route('/serv/{name}', name: 'app_service')]
-    public function test(String $name): Response
-    {
-        return $this->render('service/showService.html.twig', [
-            'name' => $name,
-        ]);
-
-    }
 
     #[Route('/show/{name}', name: 'app_show')]
     public function showService(String $name): Response{
+        return $this->render('service/showService.html.twig', [
+            'name' => $name,
+        ]);
+    }
+
+    
+    #[Route('/affiche/{name}', name: 'app_show')]
+    public function showServicez(String $name): Response{
         return new Response(
-            '<html><body>Service name: ' . htmlspecialchars($name) . '</body></html>'
+            "Service ".$name
         );
     }
+    
+
 
     #[Route('/go_to_index', name: 'goToIndex')]
     public function goToIndex(): Response
     {
-        return $this->redirectToRoute('test');
+        return $this->redirectToRoute('bonjour');
     }
 }
